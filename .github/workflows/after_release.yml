@@ -52,7 +52,7 @@ jobs:
       - name: Create the tag branch
         run: |
           git checkout -b ${{ github.event.release.tag_name }}
-          git push
+          git push --set-upstream origin ${{ github.event.release.tag_name }}
 
   create_pr_main:
     runs-on: ubuntu-latest
