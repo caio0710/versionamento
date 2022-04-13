@@ -51,7 +51,7 @@ jobs:
       
       - name: Create the tag branch
         run: |
-          git checkout -b ${{ github.event.release.tag_name }} --detach
+          git checkout -b ${{ github.event.release.tag_name }}
           git push
 
   create_pr_main:
