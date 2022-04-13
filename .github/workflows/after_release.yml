@@ -36,7 +36,7 @@ jobs:
           git add package-lock.json
           git add package.json
           git commit --message "[skip ci] ${{ github.event.release.tag_name }}"
-          git push origin release
+          git push --set-upstream origin release
 
   create_release_branch:
     runs-on: ubuntu-latest
@@ -47,12 +47,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
+          fetch-depth: 0
           ref: release
       
       - name: Create the tag branch
         run: |
-          git checkout -b ${{ github.event.release.tag_name }}
-          git push --set-upstream origin ${{ github.event.release.tag_name }}
+          git checkout -b release-${{ github.event.release.tag_name }}
+          git push origin release-${{ github.event.release.tag_name }}
 
   create_pr_main:
     runs-on: ubuntu-latest
@@ -60,6 +61,12 @@ jobs:
     needs: update_release
 
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          ref: main
+
       - name: Create Pull Request on Release
         uses: thomaseizinger/create-pull-request@1.2.2
         with:
