@@ -1,0 +1,39 @@
+name-template: 'Release v$RESOLVED_VERSION'
+tag-template: 'v$RESOLVED_VERSION'
+filter-by-commitsh: true
+categories:
+  - title: '🚀️ Novos componentes'
+    label: 'new component'
+  - title: '🎨️ Melhorias'
+    label: 'enhancement'
+  - title: '🐛️ Correções'
+    label: 'bug'
+  - title: '📓️ Documentação'
+    label: 'documentation'
+  - title: '🎒️ Atualizações de dependências'
+    label: 'dependencies'
+  - title: '🚧️ Manutenção'
+    label: 'maintenance'
+version-resolver:
+  major:
+    labels:
+      - 'new component'
+  minor:
+    labels:
+      - 'enhancement'
+  patch:
+    labels:
+      - 'bug'
+      - 'documentation'
+      - 'dependencies'
+      - 'maintenance'
+  default: 'patch'
+change-template: '- #$NUMBER | $TITLE (@$AUTHOR)'
+exclude-labels:
+  - 'automated'
+template: |
+  ## Alterações
+  
+  $CHANGES
+
+  **Comparar com a versão anterior**: https://github.com/$OWNER/$REPOSITORY/compare/$PREVIOUS_TAG...v$RESOLVED_VERSION
