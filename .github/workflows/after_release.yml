@@ -46,8 +46,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-        fetch-depth: 0
         with:
+          fetch-depth: 0
           ref: release
       
       - name: Create the tag branch
@@ -63,8 +63,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-        fetch-depth: 0
         with:
+          fetch-depth: 0
           ref: main
 
       - name: Create Pull Request on Release
