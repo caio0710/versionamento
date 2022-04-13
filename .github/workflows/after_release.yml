@@ -52,8 +52,8 @@ jobs:
       
       - name: Create the tag branch
         run: |
-          git checkout -b ${{ github.event.release.tag_name }}
-          git push origin ${{ github.event.release.tag_name }}
+          git checkout -b release-${{ github.event.release.tag_name }}
+          git push origin release-${{ github.event.release.tag_name }}
 
   create_pr_main:
     runs-on: ubuntu-latest
