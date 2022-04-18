@@ -53,6 +53,7 @@ jobs:
       - name: Create the tag branch
         run: |
           git checkout -b release-${{ github.event.release.tag_name }}
+          git commit --allow-empty
           git push origin release-${{ github.event.release.tag_name }}
 
   create_pr_main:
